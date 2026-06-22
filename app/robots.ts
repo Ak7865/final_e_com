@@ -1,0 +1,21 @@
+import { MetadataRoute } from "next";
+import { getSiteUrl } from "@/lib/site";
+
+export default function robots(): MetadataRoute.Robots {
+  const baseUrl = getSiteUrl();
+  return {
+    rules: {
+      userAgent: "*",
+      allow: "/",
+      disallow: [
+        "/admin/",
+        "/profile/",
+        "/orders/",
+        "/checkout/",
+        "/cart/",
+        "/notifications/",
+      ],
+    },
+    sitemap: `${baseUrl}/sitemap.xml`,
+  };
+}
